@@ -146,7 +146,7 @@ const update = async (req, res, next) => {
         const { name } = req.body;
         const result = await pool.query('UPDATE "TestProjects" SET "Name" = $1 WHERE "Id" = $2 RETURNING "Id", "Name"', [name, id]);
         if (result.rows.length === 0) {
-            return res.status(404).json({ error: 'Project not found' });
+            return res.status(404).json({ error: 'Project not found ok?' });
         }
         res.json(result.rows[0]);
     // Do NOT catch generic errors - let them bubble up to global error handler middleware
